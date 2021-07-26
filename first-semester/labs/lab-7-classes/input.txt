@@ -1,0 +1,4 @@
+Lukyanov V.P. 123456789 Programmer 28.03.1998 01.09.2020
+Usanov A.R. 123456789 Ingeneer 28.03.1997 01.07.2020
+Kustov E.P. 123456789 Programmer 28.03.2002 01.05.2020
+Kalinichev N.A. 123456789 Programmer 28.03.2002 01.05.2019

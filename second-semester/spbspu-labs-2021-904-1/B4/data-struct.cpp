@@ -29,7 +29,7 @@ int readKey(std::istream &stream)
   stream >> key;
   if (!stream || (std::abs(key) > MAX_ABS_KEY_VALUE))
   {
-    stream.setstate(std::ios_base::failbit);
+    stream.setstate(std::ios::failbit);
   }
   return key;
 }
@@ -40,7 +40,7 @@ std::string readStr(std::istream &stream)
   std::getline(stream, str);
   if (!stream)
   {
-    stream.setstate(std::ios_base::failbit);
+    stream.setstate(std::ios::failbit);
   }
   return str;
 }
@@ -52,25 +52,25 @@ std::istream &operator>>(std::istream &stream, DataStruct &dataStruct)
   {
     return stream;
   }
-  stream >> skipWS;
+  stream >> std::noskipws;
   const int key1 = readKey(stream);
   if (!stream || (stream.get() != SEPARATOR))
   {
-    stream.setstate(std::ios_base::failbit);
+    stream.setstate(std::ios::failbit);
     return stream;
   }
   stream >> skipWS;
   const int key2 = readKey(stream);
   if (!stream || (stream.get() != SEPARATOR))
   {
-    stream.setstate(std::ios_base::failbit);
+    stream.setstate(std::ios::failbit);
     return stream;
   }
   stream >> skipWS;
   const std::string str = readStr(stream);
   if (!stream)
   {
-    stream.setstate(std::ios_base::failbit);
+    stream.setstate(std::ios::failbit);
     return stream;
   }
   dataStruct.key1 = key1;

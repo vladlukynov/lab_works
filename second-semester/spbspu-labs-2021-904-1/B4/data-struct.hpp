@@ -16,8 +16,7 @@ struct CompareDataStructs
   bool operator()(const DataStruct &firstStruct, const DataStruct &secondStruct);
 };
 
-int readKey(std::istream &stream);
-std::string readStr(std::istream &stream);
+int readKey(std::istream &stream, int minKeyValue, int maxKeyValue);
 
 std::istream &operator>>(std::istream &stream, DataStruct &dataStruct);
 std::ostream &operator<<(std::ostream &stream, const DataStruct &dataStruct);

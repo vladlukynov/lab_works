@@ -4,7 +4,8 @@
 
 #include "utilities.hpp"
 
-const int MAX_ABS_KEY_VALUE = 5;
+const int MIN_KEY_VALUE = -5;
+const int MAX_KEY_VALUE = 5;
 const char SEPARATOR = ',';
 
 bool CompareDataStructs::operator()(const DataStruct &firstStruct, const DataStruct &secondStruct)
@@ -13,36 +14,22 @@ bool CompareDataStructs::operator()(const DataStruct &firstStruct, const DataStr
   {
     return firstStruct.key1 < secondStruct.key1;
   }
-  else if (firstStruct.key2 != secondStruct.key2)
+  if (firstStruct.key2 != secondStruct.key2)
   {
     return firstStruct.key2 < secondStruct.key2;
   }
-  else
-  {
-    return firstStruct.str.size() < secondStruct.str.size();
-  }
+  return firstStruct.str.size() < secondStruct.str.size();
 }
 
-int readKey(std::istream &stream)
+int readKey(std::istream &stream, int minKeyValue, int maxKeyValue)
 {
   int key;
   stream >> key;
-  if (!stream || (std::abs(key) > MAX_ABS_KEY_VALUE))
+  if (!stream || (key < minKeyValue) || (key > maxKeyValue))
   {
     stream.setstate(std::ios::failbit);
   }
   return key;
-}
-
-std::string readStr(std::istream &stream)
-{
-  std::string str;
-  std::getline(stream, str);
-  if (!stream)
-  {
-    stream.setstate(std::ios::failbit);
-  }
-  return str;
 }
 
 std::istream &operator>>(std::istream &stream, DataStruct &dataStruct)
@@ -52,23 +39,25 @@ std::istream &operator>>(std::istream &stream, DataStruct &dataStruct)
   {
     return stream;
   }
+  StreamGuard streamGuard(stream);
   stream >> std::noskipws;
-  const int key1 = readKey(stream);
+  const int key1 = readKey(stream, MIN_KEY_VALUE, MAX_KEY_VALUE);
   if (!stream || (stream.get() != SEPARATOR))
   {
     stream.setstate(std::ios::failbit);
     return stream;
   }
   stream >> skipWS;
-  const int key2 = readKey(stream);
+  const int key2 = readKey(stream, MIN_KEY_VALUE, MAX_KEY_VALUE);
   if (!stream || (stream.get() != SEPARATOR))
   {
     stream.setstate(std::ios::failbit);
     return stream;
   }
   stream >> skipWS;
-  const std::string str = readStr(stream);
-  if (!stream)
+  std::string str;
+  std::getline(stream, str);
+  if (!stream || str.empty())
   {
     stream.setstate(std::ios::failbit);
     return stream;

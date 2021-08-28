@@ -10,3 +10,13 @@ std::istream &skipWS(std::istream &stream)
   }
   return stream;
 }
+
+StreamGuard::StreamGuard(std::istream &stream) :
+  stream_(stream),
+  flags_(stream.flags())
+{}
+
+StreamGuard::~StreamGuard()
+{
+  stream_.setf(flags_);
+}

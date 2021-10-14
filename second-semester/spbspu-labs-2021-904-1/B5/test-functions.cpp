@@ -2,7 +2,6 @@
 #include <iterator>
 
 #include "functions.hpp"
-#include "shape.hpp"
 
 BOOST_AUTO_TEST_SUITE(testFunctions)
 

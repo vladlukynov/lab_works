@@ -41,15 +41,18 @@ BOOST_AUTO_TEST_SUITE(testShape)
 
     input.clear();
     input.str("2 (5; 5) 7;5)");
+    input >> shape;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("2 (5; 5) (7;5) (1;3)");
+    input >> shape;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("2 (5; 5)");
-    BOOST_CHECK(!input.eof());
+    input >> shape;
+    BOOST_CHECK(!input);
   }
 
   BOOST_AUTO_TEST_CASE(testCorrectPointInput)
@@ -74,25 +77,49 @@ BOOST_AUTO_TEST_SUITE(testShape)
 
   BOOST_AUTO_TEST_CASE(testIncorrectPointInput)
   {
-    Shape shape;
+    Point point;
     std::istringstream input("(2  5)");
-    input >> shape;
+    input >> point;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("(2; )");
+    input >> point;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("( ; 5)");
+    input >> point;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("2;5)");
+    input >> point;
     BOOST_CHECK(!input.eof());
 
     input.clear();
     input.str("2;5");
+    input >> point;
+    BOOST_CHECK(!input.eof());
+
+    input.clear();
+    input.str("(\n2;5)");
+    input >> point;
+    BOOST_CHECK(!input.eof());
+
+    input.clear();
+    input.str("(2\n;5)");
+    input >> point;
+    BOOST_CHECK(!input.eof());
+
+    input.clear();
+    input.str("(2;\n5)");
+    input >> point;
+    BOOST_CHECK(!input.eof());
+
+    input.clear();
+    input.str("(2;5\n)");
+    input >> point;
     BOOST_CHECK(!input.eof());
   }
 

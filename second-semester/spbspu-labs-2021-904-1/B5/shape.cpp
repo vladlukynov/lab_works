@@ -21,10 +21,9 @@ std::istream &operator>>(std::istream &stream, Shape &shape)
   stream >> std::noskipws;
   int countVertices = 0;
   Shape tempShape;
-  stream >> countVertices;
+  stream >> std::ws >> countVertices;
   if (!stream)
   {
-    stream.setstate(std::ios::failbit);
     return stream;
   }
   for (int i = 0; i < countVertices; i++)
@@ -32,6 +31,10 @@ std::istream &operator>>(std::istream &stream, Shape &shape)
     Point tempPoint{};
     stream >> skipWS;
     stream >> tempPoint;
+    if (!stream)
+    {
+      return stream;
+    }
     tempShape.push_back(tempPoint);
   }
   shape = std::move(tempShape);
@@ -61,6 +64,7 @@ std::istream &operator>>(std::istream &stream, Point &point)
     return stream;
   }
   StreamGuard streamGuard(stream);
+  stream >> std::noskipws;
   if (stream.get() != OPEN_BRACKET)
   {
     stream.setstate(std::ios::failbit);
@@ -96,10 +100,7 @@ bool ShapeComparator::operator()(const Shape &firstShape, const Shape &secondSha
 {
   if (details::isRectangle(firstShape) && details::isRectangle(secondShape))
   {
-    if (details::isSquare(firstShape) && !details::isSquare(secondShape))
-    {
-      return true;
-    }
+    return details::isSquare(firstShape) && !details::isSquare(secondShape);
   }
   return firstShape.size() < secondShape.size();
 }

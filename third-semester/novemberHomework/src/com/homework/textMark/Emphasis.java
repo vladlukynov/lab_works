@@ -1,4 +1,4 @@
-package com.homeWork.textMark;
+package com.homework.textMark;
 
 import java.util.List;
 

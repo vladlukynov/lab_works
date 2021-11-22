@@ -1,4 +1,4 @@
-package com.homeWork.textMark;
+package com.homework.textMark;
 
 public class Text implements textMark {
     public Text(String str) {

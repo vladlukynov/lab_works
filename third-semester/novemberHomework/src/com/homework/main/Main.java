@@ -1,10 +1,10 @@
-package com.homeWork.main;
+package com.homework.main;
 
-import com.homeWork.textMark.Paragraph;
-import com.homeWork.textMark.Strikeout;
-import com.homeWork.textMark.Strong;
-import com.homeWork.textMark.Emphasis;
-import com.homeWork.textMark.Text;
+import com.homework.textMark.Paragraph;
+import com.homework.textMark.Strikeout;
+import com.homework.textMark.Strong;
+import com.homework.textMark.Emphasis;
+import com.homework.textMark.Text;
 
 import java.util.List;
 

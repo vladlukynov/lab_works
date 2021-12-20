@@ -14,7 +14,14 @@ public class Main {
             System.err.println("Wrong number of arguments");
             System.exit(1);
         }
-        int countOfThreads = Integer.parseInt(args[0]);
+
+        int countOfThreads = 0;
+        try {
+            countOfThreads = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.err.println("Input is not a number");
+            System.exit(1);
+        }
 
         SynchronousQueue<String> queue = new SynchronousQueue<>();
 

@@ -42,47 +42,13 @@ public class Functions {
     }
 
     public static Class<? extends Chordates> selectUpperBoundClass() throws IllegalArgumentException {
-        System.out.println("""
-                Upper bound generic
-                Select class:
-                1. Chordates
-                2. Mammals
-                3. Carnivores
-                4. Feline
-                5. Cats
-                6. Cat""");
-        int selectedClass = inputClassNumber();
-        return switch (selectedClass) {
-            case 1 -> Chordates.class;
-            case 2 -> Mammals.class;
-            case 3 -> Carnivores.class;
-            case 4 -> Feline.class;
-            case 5 -> Cats.class;
-            case 6 -> Cat.class;
-            default -> throw new IllegalArgumentException("Wrong number");
-        };
+        System.out.println(listOfClassesString);
+        return selectClass();
     }
 
     public static Class<? super Cat> selectLowerBoundClass() throws IllegalArgumentException {
-        System.out.println("""
-                Lower bound generic
-                Select class:
-                1. Chordates
-                2. Mammals
-                3. Carnivores
-                4. Feline
-                5. Cats
-                6. Cat""");
-        int selectedClass = inputClassNumber();
-        return switch (selectedClass) {
-            case 1 -> Chordates.class;
-            case 2 -> Mammals.class;
-            case 3 -> Carnivores.class;
-            case 4 -> Feline.class;
-            case 5 -> Cats.class;
-            case 6 -> Cat.class;
-            default -> throw new IllegalArgumentException("Wrong number");
-        };
+        System.out.println(listOfClassesString);
+        return selectClass();
     }
 
     public static int inputClassNumber() throws IllegalArgumentException {
@@ -95,4 +61,28 @@ public class Functions {
         }
         return selectedClass;
     }
+
+    public static Class selectClass() {
+        int selectedClass = inputClassNumber();
+        return switch (selectedClass) {
+            case 1 -> Chordates.class;
+            case 2 -> Mammals.class;
+            case 3 -> Carnivores.class;
+            case 4 -> Feline.class;
+            case 5 -> Cats.class;
+            case 6 -> Cat.class;
+            default -> throw new IllegalArgumentException("Wrong number");
+        };
+    }
+
+    private static final String listOfClassesString = """
+            Upper bound generic
+            Select class:
+            1. Chordates
+            2. Mammals
+            3. Carnivores
+            4. Feline
+            5. Cats
+            6. Cat""";
 }
+

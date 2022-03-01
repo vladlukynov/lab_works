@@ -6,7 +6,7 @@
 int main()
 {
   const int N = 8;
-  const double p[5] = {1.0, 0.1, 0.01, 0.0001, 0.000001};
+  const double p[6] = {1.0, 0.1, 0.01, 0.0001, 0.000001, 1.0E-16};
 
   std::vector<std::vector<double>> matrix = {{0,  -6, -1, -6, -3, -4, -3, -4},
                                              {-6, 35, -1, -6, -5, -6, -3, -8},
@@ -23,7 +23,7 @@ int main()
   for (double p_: p)
   {
     double condValue = 0;
-    double rate;
+    double matrixNorm;
 
     std::vector<std::vector<double>> inverseMatrix;
     std::vector<std::vector<double>> mulMatrix;
@@ -38,8 +38,8 @@ int main()
     multiplyMatrices(inverseMatrix, matrix, mulMatrix, N);
     subtractMatrices(E, mulMatrix, R, N);
 
-    rate = calculateRate(R, N);
-    std::cout << "Rate: " << rate << "\n";
+    matrixNorm = calculateMatrixNorm(R, N);
+    std::cout << "Matrix norm: " << matrixNorm << "\n";
   }
 
   return 0;

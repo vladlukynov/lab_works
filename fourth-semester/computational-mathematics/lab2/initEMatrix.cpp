@@ -1,6 +1,6 @@
 #include "functions.hpp"
 
-void initEMatrix(std::vector <std::vector<double>> &matrix, int N)
+void initEMatrix(std::vector<std::vector<double>> &matrix, int N)
 {
   for (int i = 0; i < N; i++)
   {

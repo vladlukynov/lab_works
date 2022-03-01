@@ -2,7 +2,7 @@
 
 #include <cmath>
 
-double calculateRate(const std::vector<std::vector<double>> &matrix, int N)
+double calculateMatrixNorm(const std::vector<std::vector<double>> &matrix, int N)
 {
   double max = 0;
   for (int i = 0; i < N; i++)

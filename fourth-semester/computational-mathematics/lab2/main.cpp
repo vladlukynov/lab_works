@@ -39,7 +39,7 @@ int main()
     subtractMatrices(E, mulMatrix, R, N);
 
     matrixNorm = calculateMatrixNorm(R, N);
-    std::cout << "Matrix norm: " << matrixNorm << "\n";
+    std::cout << "Matrix norm: " << matrixNorm << "\n\n";
   }
 
   return 0;

@@ -12,4 +12,4 @@ include_directories(software)
 # add_executable(computational-mathematics lab2/main.cpp lab2/countInverseMatrix.cpp lab2/multiplyMatrices.cpp lab2/subtractMatrices.cpp lab2/calculateMatrixNorm.cpp lab2/initEMatrix.cpp software/DECOMP.CPP)
 
 # lab3
- add_executable(math_labs lab3/main.cpp software/RKF45.CPP lab3/useRKF.cpp lab3/functions.hpp lab3/useRungeKutta.cpp)
+ add_executable(computational-mathematics lab3/main.cpp software/RKF45.CPP lab3/useRKF.cpp lab3/functions.hpp lab3/useRungeKuttaMethod.cpp)

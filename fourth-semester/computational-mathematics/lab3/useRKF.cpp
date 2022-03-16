@@ -34,10 +34,10 @@ void useRKF()
   for (int i = 0; i <= h; i++)
   {
     RKF45(function, N, x, tBegin, tout, RE, AE, WORK, FLAG);
-/*    if (FLAG == 4)
+    if (FLAG == 4)
     {
       RKF45(function, N, x, tBegin, tout, RE, AE, WORK, FLAG);
-    }*/
+    }
     std::cout << std::setw(15) << tout << std::setw(15) << x[0] << std::setw(15) << x[1] << std::setw(15) << FLAG
               << "\n";
     tout += hPrint;

@@ -2,6 +2,6 @@
 #define FUNCTIONS_HPP
 
 void useRKF();
-void useRungeKutte(double h, double hPrint);
+void useRungeKuttaMethod(double h, double hPrint);
 
 #endif

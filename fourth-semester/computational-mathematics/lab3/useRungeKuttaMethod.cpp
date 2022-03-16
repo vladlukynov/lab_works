@@ -10,7 +10,7 @@ void func(double t, double *x, double *dx)
   dx[1] = x[0] + std::cos(1 - t) + t + 1;
 }
 
-void useRungeKutte(double h, double hPrint_)
+void useRungeKuttaMethod(double h, double hPrint_)
 {
   double hPrint = 0.04;
 

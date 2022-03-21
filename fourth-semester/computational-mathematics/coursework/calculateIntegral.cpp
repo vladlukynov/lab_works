@@ -9,13 +9,9 @@ double integrateFunction(double x)
   return std::sqrt(3 - x) * std::cos(x);
 }
 
-double countEpsilon()
+double calculateIntegral(double A, double B, double ABSERR, double RELERR)
 {
   double integralValue = 0.0;
-  double A = 0.0;
-  double B = M_PI / 2;
-  double ABSERR = 0.00001;
-  double RELERR = 0.00001;
   double ERREST = 0.0;
   int NOFUN = 0;
   double POSN = 0.0;
@@ -23,8 +19,8 @@ double countEpsilon()
 
   quanc8(integrateFunction, A, B, ABSERR, RELERR, &integralValue, &ERREST, &NOFUN, &POSN, &FLAG);
 
-  std::cout << "QUANC8 result, flag\n"
-            << integralValue << " " << FLAG << "\n";
+  std::cout << "Integral value = " << integralValue << "\n"
+            << "FLAG = " << FLAG << "\n";
 
-  return  0.6436369 * integralValue;
+  return integralValue;
 }

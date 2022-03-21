@@ -9,16 +9,13 @@ double expFunction(double x)
   return std::cos(x) / std::sin(x) + x / (1 - std::pow(x, 2));
 }
 
-double countExp()
+double calculateEquation(double A, double B, double ABSERR)
 {
-  double A = 4.0;
-  double B = 6.0;
-  double TOL = 0.0001;
-  int FLAG = 0;
+  int flag = 0;
 
-  double result = zeroin(A, B, expFunction, TOL, &FLAG);
-  std::cout << "Zeroin result, flag\n"
-            << result << " " << FLAG << "\n";
+  double result = zeroin(A, B, expFunction, ABSERR, &flag);
+  std::cout << "Equation result = " << result << "\n"
+            << "flag = " << flag << "\n";
 
   return result;
 }

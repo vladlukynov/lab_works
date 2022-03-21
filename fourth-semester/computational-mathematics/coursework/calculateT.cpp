@@ -9,7 +9,7 @@ void calculateT(double E, double l, int N)
   const double h = l / N;
   const int NDIM = N - 1;
 
-  double x[N];
+  double *x = new double[N];
   x[0] = 0.0;
   for (int i = 1; i < N; i++)
   {
@@ -19,13 +19,13 @@ void calculateT(double E, double l, int N)
   double T0 = 0.0;
   double TN = 1.0;
 
-  double A[NDIM * NDIM];
+  double *A = new double[NDIM * NDIM];
   for (int i = 0; i < NDIM * NDIM; i++)
   {
     A[i] = 0;
   }
 
-  double B[NDIM];
+  double *B = new double[NDIM];
   /* initialize two first elements of matrix */
   A[0] = -2 * E - std::pow(h, 2) * x[1];  // i = 1
   A[1] = E + h * (x[1] / 2);
@@ -51,7 +51,7 @@ void calculateT(double E, double l, int N)
 
   double cond = 0.0;
   int flag = 0;
-  int IPVT[NDIM];
+  int *IPVT = new int[NDIM];
   decomp(NDIM, NDIM, A, &cond, IPVT, &flag);
   solve(NDIM, NDIM, A, B, IPVT);
 
@@ -62,4 +62,9 @@ void calculateT(double E, double l, int N)
   {
     std::cout << "T" << i + 1 << " = " << B[i] << "\n";
   }
+
+  delete[] x;
+  delete[] A;
+  delete[] B;
+  delete[] IPVT;
 }

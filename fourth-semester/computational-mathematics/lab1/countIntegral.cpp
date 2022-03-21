@@ -1,5 +1,6 @@
 #include "functions.hpp"
 
+#include <cmath>
 #include <FORSYTHE.H>
 
 double f(double x)

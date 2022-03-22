@@ -4,15 +4,9 @@
 #include <cmath>
 #include <iomanip>
 
-void func(double t, double *x, double *dx)
-{
-  dx[0] = -155 * x[0] - 750 * x[1] + std::sin(1 + t);
-  dx[1] = x[0] + std::cos(1 - t) + t + 1;
-}
-
 void useRungeKuttaMethod(double h, double hPrint_)
 {
-  double hPrint = 0.04;
+  double hPrint = hPrint_;
 
   const int N = 2;
   const double h_ = 1.0 / h;
@@ -25,7 +19,7 @@ void useRungeKuttaMethod(double h, double hPrint_)
   for (int i = 1; i <= h_; i++)
   {
     double fPrev[N];
-    func(tPrev, xPrev, fPrev);
+    function(tPrev, xPrev, fPrev);
     double xInter[N] = {
       xPrev[0] + h / 6.0 * fPrev[0],
       xPrev[1] + h / 6.0 * fPrev[1]
@@ -33,7 +27,7 @@ void useRungeKuttaMethod(double h, double hPrint_)
 
     double tInter = tPrev + h / 6.0;
     double fInter[N];
-    func(tInter, xInter, fInter);
+    function(tInter, xInter, fInter);
 
     double xNext[N] = {
       xPrev[0] + h * (-2 * fPrev[0] + 3 * fInter[0]),

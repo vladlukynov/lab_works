@@ -3,5 +3,6 @@
 
 void useRKF();
 void useRungeKuttaMethod(double h, double hPrint);
+void function(double t, double *x, double *dx);
 
 #endif

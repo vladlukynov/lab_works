@@ -3,4 +3,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 include_directories(../software)
 
-add_executable(lab3 main.cpp useRKF.cpp functions.hpp useRungeKuttaMethod.cpp ../software/RKF45.CPP)
+add_executable(lab3 main.cpp useRKF.cpp functions.hpp useRungeKuttaMethod.cpp ../software/RKF45.CPP function.cpp)

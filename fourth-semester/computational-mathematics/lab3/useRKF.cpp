@@ -1,15 +1,8 @@
 #include "functions.hpp"
 
 #include <iostream>
-#include <cmath>
 #include <iomanip>
 #include <FORSYTHE.H>
-
-void function(double t, double *x, double *dx)
-{
-  dx[0] = -155 * x[0] - 750 * x[1] + std::sin(1 + t);
-  dx[1] = x[0] + std::cos(1 - t) + t + 1;
-}
 
 void useRKF()
 {
@@ -34,7 +27,7 @@ void useRKF()
   for (int i = 0; i <= h; i++)
   {
     RKF45(function, N, x, tBegin, tout, RE, AE, WORK, FLAG);
-    if (FLAG == 4)
+    while (FLAG == 4)
     {
       RKF45(function, N, x, tBegin, tout, RE, AE, WORK, FLAG);
     }

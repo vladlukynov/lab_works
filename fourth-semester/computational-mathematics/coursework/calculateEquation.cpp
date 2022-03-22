@@ -15,7 +15,7 @@ double calculateEquation(double A, double B, double ABSERR)
 
   double result = zeroin(A, B, expFunction, ABSERR, &flag);
   std::cout << "Equation result = " << result << "\n"
-            << "flag = " << flag << "\n";
+            << "FLAG = " << flag << "\n";
 
   return result;
 }

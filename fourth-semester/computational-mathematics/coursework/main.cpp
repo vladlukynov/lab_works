@@ -26,5 +26,8 @@ int main()
   std::cout << "N = 10\n";
   calculateT(E, l, 10);
 
+  std::cout << "N = 20\n";
+  calculateT(E, l, 20);
+
   return 0;
 }

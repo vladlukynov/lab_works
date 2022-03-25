@@ -19,7 +19,7 @@ double calculateIntegral(double A, double B, double ABSERR, double RELERR)
 
   quanc8(integrateFunction, A, B, ABSERR, RELERR, &integralValue, &ERREST, &NOFUN, &POSN, &FLAG);
 
-  std::cout << "Integral value = " << integralValue << "\n"
+  std::cout << "Integral result = " << integralValue << "\n"
             << "FLAG = " << FLAG << "\n";
 
   return integralValue;

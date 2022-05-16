@@ -12,7 +12,7 @@
 
 <div class="container mt-3">
     <h1 th:text="${title}"/>
-    <form th:action="'/ward/edit/' + ${ward.id}" method="post">
+    <form th:action="'/ward/edit/' + ${ward.id} + '?oldName=' + ${ward.name}" method="post">
         <input type="text" th:value="${ward.name}" name="name" placeholder="Name" class="form-control"><br>
         <input type="text" th:value="${ward.maxCount}" name="maxCount" placeholder="Max seats" class="form-control"><br>
         <button type="submit" class="btn btn-success">Edit</button>

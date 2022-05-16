@@ -61,11 +61,14 @@ public class WardsController {
     }
 
     @PostMapping("/ward/edit/{id}")
-    public String editWard(@PathVariable("id") long id, @RequestParam String name, @RequestParam long maxCount) {
+    public String editWard(@PathVariable("id") long id, @RequestParam String name, @RequestParam long maxCount,
+                           @RequestParam String oldName) {
         String nameURL = "http://localhost:8080/wards/update/name/" + id + "?newName=" + name;
         String maxCountURL = "http://localhost:8080/wards/update/maxCount/" + id + "?newMaxCount=" + maxCount;
 
-        processPostRequest(nameURL, user.getToken(), null, HttpMethod.PUT, null);
+        if (!name.equals(oldName)) {
+            processPostRequest(nameURL, user.getToken(), null, HttpMethod.PUT, null);
+        }
         processPostRequest(maxCountURL, user.getToken(), null, HttpMethod.PUT, null);
         return "redirect:/wards";
     }

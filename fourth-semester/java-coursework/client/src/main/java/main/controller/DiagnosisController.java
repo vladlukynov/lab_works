@@ -62,10 +62,14 @@ public class DiagnosisController {
     }
 
     @PostMapping("/diagnose/edit/{id}")
-    public String editDiagnose(@PathVariable("id") long id, @RequestParam String name) {
+    public String editDiagnose(@PathVariable("id") long id, @RequestParam String name,
+                               @RequestParam String oldName) {
         String url = "http://localhost:8080/diagnosis/update/name/" + id + "?newName=" + name;
 
-        processPostRequest(url, user.getToken(), null, HttpMethod.PUT, null);
+        if (!name.equals(oldName)) {
+            processPostRequest(url, user.getToken(), null, HttpMethod.PUT, null);
+        }
+
         return "redirect:/diagnosis";
     }
 

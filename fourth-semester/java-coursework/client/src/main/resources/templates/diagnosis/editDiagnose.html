@@ -12,7 +12,7 @@
 
 <div class="container mt-3">
     <h1 th:text="${title}"/>
-    <form th:action="'/diagnose/edit/' + ${diagnose.id}" method="post">
+    <form th:action="'/diagnose/edit/' + ${diagnose.id} + '?oldName=' + ${diagnose.name}" method="post">
         <input type="text" th:value="${diagnose.name}" name="name" placeholder="Name" class="form-control"><br>
         <button type="submit" class="btn btn-success">Edit</button>
     </form>

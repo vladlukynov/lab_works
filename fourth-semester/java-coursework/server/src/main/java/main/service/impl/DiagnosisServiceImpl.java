@@ -81,6 +81,9 @@ public class DiagnosisServiceImpl implements DiagnosisService {
         if (newName == null) {
             throw new IllegalArgumentException("Diagnose name cannot be empty");
         }
+        if (diagnosisRepository.existsByName(newName)) {
+            throw new DuplicateNameException("Duplicate name of diagnose");
+        }
         if (!diagnosisRepository.existsById(id)) {
             throw new DiagnoseNotFoundException("Diagnose not found by ID");
         }

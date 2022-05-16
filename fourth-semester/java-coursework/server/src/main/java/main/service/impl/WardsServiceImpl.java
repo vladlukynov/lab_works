@@ -68,6 +68,9 @@ public class WardsServiceImpl implements WardsService {
         if (newName == null) {
             throw new IllegalArgumentException("Ward name cannot be empty");
         }
+        if (wardsRepository.existsByName(newName)) {
+            throw new DuplicateNameException("Duplicate name of ward");
+        }
         if (!wardsRepository.existsById(id)) {
             throw new WardNotFoundException("Ward not found by ID");
         }

@@ -2,10 +2,7 @@ package main.service.impl;
 
 import main.entity.People;
 import main.entity.Wards;
-import main.exception.DuplicateNameException;
-import main.exception.PeopleNotFoundException;
-import main.exception.WardBusyException;
-import main.exception.WardNotFoundException;
+import main.exception.*;
 import main.repository.PeopleRepository;
 import main.repository.WardsRepository;
 import main.service.WardsService;
@@ -84,6 +81,9 @@ public class WardsServiceImpl implements WardsService {
         }
         if (!wardsRepository.existsById(id)) {
             throw new WardNotFoundException("Ward not found by ID");
+        }
+        if (peopleRepository.countByWardId(id).intValue() > newMaxCount) {
+            throw new WardOverflowException("New maxCount less than the number of people");
         }
         wardsRepository.updateWardMaxCount(id, newMaxCount);
     }

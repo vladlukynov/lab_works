@@ -52,7 +52,7 @@ public class PeopleServiceImpl implements PeopleService {
         if (!wardsRepository.existsById(people.getWard().getId())) {
             throw new WardNotFoundException("The ward must exist");
         }
-        if (peopleRepository.countByWardId(people.getWard().getId()) > wardsRepository.searchById(people.getWard().getId()).getMaxCount()) {
+        if (peopleRepository.countByWardId(people.getWard().getId()).intValue() == wardsRepository.searchById(people.getWard().getId()).getMaxCount()) {
             throw new WardOverflowException("Too many people in ward");
         }
 
